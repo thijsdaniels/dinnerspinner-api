@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Api\Errors\NotFoundError;
-use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,6 +14,18 @@ use Illuminate\Http\Request;
  */
 class UserController extends ApiController
 {
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @todo Obviously this shouldn't be public.
+     */
+    public function index(Request $request)
+    {
+        $users = User::all();
+
+        return $this->successResponse($users);
+    }
+
     /**
      * @param Request $request
      * @param string $username

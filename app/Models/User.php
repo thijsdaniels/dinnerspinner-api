@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /**
  * Class User
@@ -35,5 +36,21 @@ class User extends Model
     public function recipes()
     {
         return $this->hasMany(Recipe::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function selections()
+    {
+        return $this->hasMany(Selection::class);
+    }
+
+    /**
+     * @return HasManyThrough
+     */
+    public function requirements()
+    {
+        return $this->hasManyThrough(Requirement::class, Selection::class);
     }
 }

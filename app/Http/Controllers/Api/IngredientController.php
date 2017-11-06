@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Api\Errors\NotFoundError;
+use App\Models\Ingredient;
 use App\Models\Recipe;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
- * Class RecipeController
+ * Class IngredientController
  *
  * @package App\Http\Controllers\Api
  */
-class RecipeController extends ApiController
+class IngredientController extends ApiController
 {
     /**
      * @param Request $request
@@ -20,7 +21,7 @@ class RecipeController extends ApiController
      */
     public function index(Request $request)
     {
-        $recipes = Recipe::all();
+        $recipes = Ingredient::all();
 
         return $this->successResponse($recipes);
     }
@@ -32,7 +33,7 @@ class RecipeController extends ApiController
      */
     public function show(Request $request, $id)
     {
-        $recipe = Recipe::find($id);
+        $recipe = Ingredient::find($id);
 
         if (!$recipe)
             return $this->errorResponse(new NotFoundError(), 404);

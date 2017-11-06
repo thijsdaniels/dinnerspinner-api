@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\User;
 
 use App\Api\Errors\NotFoundError;
+use App\Http\Controllers\Api\ApiController;
 use App\Models\Recipe;
 use App\Models\Requirement;
 use App\Models\Selection;
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 /**
  * Class RequirementsController
  *
- * @package App\Http\Controllers\Api
+ * @package App\Http\Controllers\Api\User
  */
 class RequirementController extends ApiController
 {

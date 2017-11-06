@@ -17,10 +17,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::resource('/users', 'UserController');
+Route::resource('/recipes', 'RecipeController');
+Route::resource('/ingredients', 'IngredientController');
+
 Route::group([
-    'prefix' => '/users/{username}'
+    'prefix' => '/users/{username}',
+    'namespace' => 'User',
 ], function () {
-    Route::get('/', 'UserController@show');
     Route::resource('/recipes', 'RecipeController');
     Route::resource('/selections', 'SelectionController');
     Route::resource('/requirements', 'RequirementController');

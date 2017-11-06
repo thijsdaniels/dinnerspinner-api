@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\User;
 
 use App\Api\Errors\NotFoundError;
+use App\Http\Controllers\Api\ApiController;
 use App\Models\Recipe;
 use App\Models\Selection;
 use Illuminate\Http\JsonResponse;
