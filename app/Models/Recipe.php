@@ -20,8 +20,9 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @property int $difficulty
  * @property float $rating
  * @property int $servings
- * @property Collection $steps
  * @property Collection $images
+ * @property Collection $requirements
+ * @property Collection $steps
  * @method static Builder forUser(string $username)
  */
 class Recipe extends Model
@@ -53,8 +54,9 @@ class Recipe extends Model
      * @var array
      */
     protected $with = [
-        'requirements',
         'images',
+        'requirements',
+        'steps',
     ];
 
     /**

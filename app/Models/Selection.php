@@ -42,14 +42,6 @@ class Selection extends Model
     /**
      * @var array
      */
-    protected $casts = [
-        'bought_at' => 'dateTime',
-        'cooked_at' => 'dateTime',
-    ];
-
-    /**
-     * @var array
-     */
     protected $with = [
         'recipe',
     ];

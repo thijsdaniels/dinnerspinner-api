@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -40,5 +41,13 @@ class Step extends Model
     public function recipe()
     {
         return $this->belongsTo(Requirement::class);
+    }
+
+    /**
+     * @return Builder
+     */
+    public function newQuery()
+    {
+        return parent::newQuery()->orderBy('position');
     }
 }

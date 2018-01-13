@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\V1;
 
 use App\Api\Errors\Error;
 use App\Http\Controllers\Controller;
@@ -10,7 +10,7 @@ use Illuminate\Pagination\AbstractPaginator;
 /**
  * Class ApiController
  *
- * @package App\Http\Controllers\Api
+ * @package App\Http\Controllers\Api\V1
  */
 abstract class ApiController extends Controller
 {

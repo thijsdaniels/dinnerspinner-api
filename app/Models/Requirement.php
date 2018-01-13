@@ -75,7 +75,7 @@ class Requirement extends Model
     /**
      * @param Builder $query
      * @param string $username
-     * @return Builder|static
+     * @return Builder
      */
     public function scopeForUser(Builder $query, $username)
     {

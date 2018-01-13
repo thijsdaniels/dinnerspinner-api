@@ -15,13 +15,9 @@ use Illuminate\Http\Request;
 
 Route::group([
     'prefix' => '/v1',
+    'namespace' => 'V1'
 ], function () {
-    // Route::middleware('auth:api')->get('/user', function (Request $request) {
-    //     return $request->user();
-    // });
-
     Route::resource('/users', 'UserController');
-    Route::resource('/recipes', 'RecipeController');
     Route::resource('/ingredients', 'IngredientController');
 
     Route::group([
@@ -30,6 +26,13 @@ Route::group([
     ], function () {
         Route::resource('/recipes', 'RecipeController');
         Route::resource('/selections', 'SelectionController');
-        Route::resource('/requirements', 'RequirementController');
+
+        Route::group([
+            'prefix' => '/recipes/{recipeId}',
+            'namespace' => 'Recipe',
+        ], function () {
+            Route::resource('/requirements', 'RequirementController');
+            Route::resource('/steps', 'StepController');
+        });
     });
 });

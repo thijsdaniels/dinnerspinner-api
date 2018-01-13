@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
  *
  * @package App\Models
  * @property int $id
- * @property string $name
+ * @property string $username
  */
 class User extends Model
 {
@@ -19,7 +19,7 @@ class User extends Model
      */
     protected $fillable = [
         'id',
-        'name',
+        'username',
     ];
 
     /**
