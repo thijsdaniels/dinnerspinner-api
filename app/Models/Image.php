@@ -40,6 +40,17 @@ class Image extends Model
     ];
 
     /**
+     * @var array
+     */
+    protected $hidden = [
+        'image_id',
+        'imageable_id',
+        'imageable_type',
+        'created_at',
+        'updated_at',
+    ];
+
+    /**
      * @return MorphTo
      */
     public function imageable()

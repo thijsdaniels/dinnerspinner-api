@@ -13,8 +13,8 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int $user_id
  * @property int $recipe_id
- * @property Carbon $bought_at
  * @property Carbon $cooked_at
+ * @property Carbon $canceled_at
  * @method static Builder forUser(string $username)
  */
 class Selection extends Model

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -14,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $ingredient_id
  * @property float $quantity
  * @property string $unit
+ * @property Carbon $bought_at
  * @method static Builder forUser(string $username)
  */
 class Requirement extends Model

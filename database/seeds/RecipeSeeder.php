@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Image;
 use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\Requirement;
@@ -30,12 +31,33 @@ class RecipeSeeder extends Seeder
         $recipe = Recipe::create([
             'user_id' => $mrPoopyButthole->getKey(),
             'name' => 'Bacon Pancakes',
-            'directions' => "Bacon ipsum dolor amet pastrami jerky bresaola sausage ground round beef venison corned beef frankfurter meatball. Strip steak shoulder fatback sirloin, bresaola swine jerky t-bone ground round cupim ham hock pastrami pancetta shankle. Doner bacon corned beef andouille pastrami kielbasa, chicken bresaola. Prosciutto ham pork, tri-tip flank ground round pancetta meatball pig landjaeger boudin. Pork loin frankfurter jerky capicola. Shank ham hock leberkas bacon turkey meatball.\r\nPork belly turducken spare ribs sirloin ball tip ribeye corned beef short loin ham hock beef ribs pastrami. Beef boudin sirloin, leberkas fatback kielbasa alcatra capicola pig shankle. Tail bresaola flank, fatback burgdoggen cupim ham hock boudin sausage pastrami pancetta. Biltong beef ribs spare ribs, cupim brisket boudin fatback meatloaf t-bone capicola pork pancetta ribeye. Spare ribs corned beef shank, boudin tail picanha pork chop meatball landjaeger pig salami cow cupim hamburger. Turducken cow prosciutto, kevin flank pig kielbasa ribeye brisket shankle.\r\nTongue shankle swine boudin alcatra venison. Short loin hamburger flank capicola landjaeger meatball shank venison doner chuck leberkas salami ball tip. Meatball short ribs beef chuck. Cupim biltong porchetta shank jowl capicola andouille shankle meatloaf chicken venison.",
             'duration_preparation' => 20,
             'duration_cooking' => 20,
             'difficulty' => -1,
             'rating' => 3.5,
             'servings' => 2,
+        ]);
+
+        /** @var Image $image */
+        $image = $recipe->images()->create([
+            'type' => 'png',
+            'width' => 1280,
+            'height' => 720,
+            'url' => 'http://placehold.it/1280x720',
+        ]);
+
+        $image->formats()->create([
+            'type' => 'png',
+            'width' => 640,
+            'height' => 320,
+            'url' => 'http://placehold.it/640x320',
+        ]);
+
+        $image->formats()->create([
+            'type' => 'png',
+            'width' => 128,
+            'height' => 128,
+            'url' => 'http://placehold.it/128x128',
         ]);
 
         /** @var Ingredient $milk */
@@ -89,6 +111,21 @@ class RecipeSeeder extends Seeder
 
         $recipe->requirements()->create([
             'ingredient_id' => $syrup->getKey(),
+        ]);
+
+        $recipe->steps()->create([
+            'position' => 0,
+            'instruction' => "Bacon ipsum dolor amet pastrami jerky bresaola sausage ground round beef venison corned beef frankfurter meatball. Strip steak shoulder fatback sirloin, bresaola swine jerky t-bone ground round cupim ham hock pastrami pancetta shankle. Doner bacon corned beef andouille pastrami kielbasa, chicken bresaola. Prosciutto ham pork, tri-tip flank ground round pancetta meatball pig landjaeger boudin. Pork loin frankfurter jerky capicola. Shank ham hock leberkas bacon turkey meatball.",
+        ]);
+
+        $recipe->steps()->create([
+            'position' => 1,
+            'instruction' => "Pork belly turducken spare ribs sirloin ball tip ribeye corned beef short loin ham hock beef ribs pastrami. Beef boudin sirloin, leberkas fatback kielbasa alcatra capicola pig shankle. Tail bresaola flank, fatback burgdoggen cupim ham hock boudin sausage pastrami pancetta. Biltong beef ribs spare ribs, cupim brisket boudin fatback meatloaf t-bone capicola pork pancetta ribeye. Spare ribs corned beef shank, boudin tail picanha pork chop meatball landjaeger pig salami cow cupim hamburger. Turducken cow prosciutto, kevin flank pig kielbasa ribeye brisket shankle.",
+        ]);
+
+        $recipe->steps()->create([
+            'position' => 2,
+            'instruction' => "Tongue shankle swine boudin alcatra venison. Short loin hamburger flank capicola landjaeger meatball shank venison doner chuck leberkas salami ball tip. Meatball short ribs beef chuck. Cupim biltong porchetta shank jowl capicola andouille shankle meatloaf chicken venison.",
         ]);
     }
 }

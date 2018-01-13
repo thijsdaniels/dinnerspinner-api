@@ -15,12 +15,12 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @property int $id
  * @property int $user_id
  * @property string $name
- * @property string $directions
  * @property int $duration_preparation
  * @property int $duration_cooking
  * @property int $difficulty
  * @property float $rating
  * @property int $servings
+ * @property Collection $steps
  * @property Collection $images
  * @method static Builder forUser(string $username)
  */
@@ -33,7 +33,6 @@ class Recipe extends Model
         'id',
         'user_id',
         'name',
-        'directions',
         'duration_preparation',
         'duration_cooking',
         'difficulty',
@@ -72,6 +71,14 @@ class Recipe extends Model
     public function requirements()
     {
         return $this->hasMany(Requirement::class);
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function steps()
+    {
+        return $this->hasMany(Step::class);
     }
 
     /**
