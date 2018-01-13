@@ -19,7 +19,6 @@ class CreateSelectionsTable extends Migration
             $table->integer('recipe_id');
             $table->integer('created_at');
             $table->integer('updated_at');
-            $table->integer('bought_at')->nullable();
             $table->integer('cooked_at')->nullable();
             $table->integer('canceled_at')->nullable();
         });

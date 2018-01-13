@@ -19,6 +19,7 @@ class CreateRequirementsTable extends Migration
             $table->integer('ingredient_id');
             $table->float('quantity')->nullable();
             $table->string('unit')->nullable();
+            $table->integer('bought_at')->nullable();
             $table->integer('created_at');
             $table->integer('updated_at');
         });

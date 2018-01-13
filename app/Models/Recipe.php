@@ -13,13 +13,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $id
  * @property int $user_id
  * @property string $name
- * @property string $image_path
  * @property string $directions
  * @property int $duration_preparation
  * @property int $duration_cooking
  * @property int $difficulty
  * @property float $rating
- * @property object $image
+ * @property Image $image
  * @property object $duration
  * @method static Builder forUser(string $username)
  */
@@ -32,7 +31,6 @@ class Recipe extends Model
         'id',
         'user_id',
         'name',
-        'image_path',
         'directions',
         'duration_preparation',
         'duration_cooking',
@@ -45,9 +43,6 @@ class Recipe extends Model
      */
     protected $hidden = [
         'user_id',
-        'image_path',
-        'duration_preparation',
-        'duration_cooking',
         'created_at',
         'updated_at',
     ];
@@ -57,14 +52,7 @@ class Recipe extends Model
      */
     protected $with = [
         'requirements',
-    ];
-
-    /**
-     * @var array
-     */
-    protected $appends = [
-        'image',
-        'duration',
+        'images',
     ];
 
     /**
@@ -84,6 +72,14 @@ class Recipe extends Model
     }
 
     /**
+     * @return HasMany
+     */
+    public function image()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    /**
      * @param Builder $query
      * @param string $username
      * @return Builder
@@ -93,29 +89,5 @@ class Recipe extends Model
         return $query->whereHas('user', function (Builder $query) use ($username) {
             return $query->where('username', $username);
         });
-    }
-
-    /**
-     * @return object
-     */
-    public function getImageAttribute()
-    {
-        if (!$this->image_path)
-            return null;
-
-        return (object) [
-            'url' => url()->to($this->image_path),
-        ];
-    }
-
-    /**
-     * @return object
-     */
-    public function getDurationAttribute()
-    {
-        return (object) [
-            'preparation' => $this->duration_preparation,
-            'cooking' => $this->duration_cooking,
-        ];
     }
 }

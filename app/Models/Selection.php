@@ -26,8 +26,8 @@ class Selection extends Model
         'id',
         'user_id',
         'recipe_id',
-        'bought_at',
         'cooked_at',
+        'canceled_at',
     ];
 
     /**

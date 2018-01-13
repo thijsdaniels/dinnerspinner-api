@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 /**
@@ -28,6 +29,14 @@ class Ingredient extends Model
         'created_at',
         'updated_at',
     ];
+
+    /**
+     * @return HasMany
+     */
+    public function requirements()
+    {
+        return $this->hasMany(Requirement::class);
+    }
 
     /**
      * @return HasManyThrough

@@ -34,6 +34,7 @@ class Requirement extends Model
         'ingredient_id',
         'quantity',
         'unit',
+        'bought_at',
     ];
 
     /**
