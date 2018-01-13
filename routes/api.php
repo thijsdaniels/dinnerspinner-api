@@ -13,19 +13,23 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::resource('/users', 'UserController');
-Route::resource('/recipes', 'RecipeController');
-Route::resource('/ingredients', 'IngredientController');
-
 Route::group([
-    'prefix' => '/users/{username}',
-    'namespace' => 'User',
+    'prefix' => '/v1',
 ], function () {
+    // Route::middleware('auth:api')->get('/user', function (Request $request) {
+    //     return $request->user();
+    // });
+
+    Route::resource('/users', 'UserController');
     Route::resource('/recipes', 'RecipeController');
-    Route::resource('/selections', 'SelectionController');
-    Route::resource('/requirements', 'RequirementController');
+    Route::resource('/ingredients', 'IngredientController');
+
+    Route::group([
+        'prefix' => '/users/{username}',
+        'namespace' => 'User',
+    ], function () {
+        Route::resource('/recipes', 'RecipeController');
+        Route::resource('/selections', 'SelectionController');
+        Route::resource('/requirements', 'RequirementController');
+    });
 });
