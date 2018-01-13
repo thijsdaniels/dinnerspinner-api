@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -18,8 +19,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $duration_cooking
  * @property int $difficulty
  * @property float $rating
- * @property Image $image
- * @property object $duration
+ * @property int $servings
+ * @property Collection $images
  * @method static Builder forUser(string $username)
  */
 class Recipe extends Model
@@ -36,6 +37,7 @@ class Recipe extends Model
         'duration_cooking',
         'difficulty',
         'rating',
+        'servings',
     ];
 
     /**
@@ -74,7 +76,7 @@ class Recipe extends Model
     /**
      * @return HasMany
      */
-    public function image()
+    public function images()
     {
         return $this->hasMany(Image::class);
     }

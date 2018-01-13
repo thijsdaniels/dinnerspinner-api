@@ -17,12 +17,12 @@ class CreateRecipesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('name');
-            $table->string('image_path')->nullable();
             $table->text('directions');
             $table->integer('duration_preparation')->nullable();
             $table->integer('duration_cooking')->nullable();
             $table->integer('difficulty')->default(0);
             $table->float('rating')->default(0);
+            $table->integer('servings');
             $table->integer('created_at');
             $table->integer('updated_at');
         });
