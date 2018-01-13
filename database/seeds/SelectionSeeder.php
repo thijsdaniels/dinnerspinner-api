@@ -28,8 +28,8 @@ class SelectionSeeder extends Seeder
         Selection::create([
             'user_id' => $mrPoopyButthole->getKey(),
             'recipe_id' => $baconPancakes->getKey(),
-            'bought_at' => null,
             'cooked_at' => null,
+            'canceled_at' => null,
         ]);
     }
 }

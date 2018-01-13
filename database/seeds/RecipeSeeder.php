@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Image;
 use App\Models\Ingredient;
 use App\Models\Recipe;
 use App\Models\Requirement;
@@ -36,6 +35,7 @@ class RecipeSeeder extends Seeder
             'duration_cooking' => 20,
             'difficulty' => -1,
             'rating' => 3.5,
+            'servings' => 2,
         ]);
 
         /** @var Ingredient $milk */
